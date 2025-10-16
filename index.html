@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="North X Agency provides innovative creative solutions including graphic design, lead generation, 3D animation, web development, video editing, social media marketing, and management.">
+  <meta name="keywords" content="media agency, graphic design, lead generation, 3D animation, web development, video editing, social media marketing, social media management, creative solutions">
+  <meta name="author" content="North X Agency">
+  <title>North X Agency - Transforming Visions into Reality</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js" crossorigin></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.23.4/babel.min.js" crossorigin></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .animate-fadeIn { animation: fadeIn 1s ease-in; }
+    .animate-slideUp { animation: slideUp 0.8s ease-out; }
+    .hover-scale { transition: transform 0.3s ease; }
+    .hover-scale:hover { transform: scale(1.05); }
+    .gradient-border { border-image: linear-gradient(to right, #8B5CF6, #EC4899) 1; }
+    .gradient-button { background: linear-gradient(to right, #8B5CF6, #EC4899); }
+    .gradient-button:hover { background: linear-gradient(to right, #7C3AED, #DB2777); }
+    .gradient-text-hover:hover { background: linear-gradient(to right, #8B5CF6, #EC4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .gradient-text { background: linear-gradient(to right, #8B5CF6, #EC4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .logo-hover:hover { border: 2px solid transparent; border-image: linear-gradient(to right, #8B5CF6, #EC4899) 1; }
+    .social-icon { font-size: 1.5rem; transition: transform 0.3s ease; }
+    .social-icon:hover { transform: scale(1.2); }
+    body { background-color: #FFFFFF; }
+    .tool-img { object-fit: contain; max-height: 40px; width: auto; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    /* Updated Services Page Styles - New Professional Theme */
+    .services-container {
+      background: #F8FAFC; /* Light slate blue for airy feel */
+      padding: 6rem 3rem; /* Increased padding for airiness */
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 3rem; /* Increased gap for airiness */
+    }
+    .service-item {
+      background: #FFFFFF;
+      padding: 3rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+    .service-item:hover {
+      transform: translateY(-5px);
+    }
+    .service-title {
+      font-size: 1.5rem;
+      color: #6D28D9;
+      margin-bottom: 1.5rem;
+    }
+    .service-desc {
+      color: #1F2937; /* Darkened for better contrast */
+      margin-bottom: 2.5rem;
+    }
+    .service-features {
+      list-style-type: none;
+      margin-bottom: 2.5rem;
+    }
+    .service-features li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      color: #1F2937; /* Darkened for better contrast */
+    }
+    .service-features li::before {
+      content: '✓';
+      color: #8B5CF6;
+      margin-right: 0.75rem;
+      font-weight: bold;
+    }
+    .service-cta {
+      background: linear-gradient(to right, #8B5CF6, #EC4899);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+    .service-cta:hover {
+      background: linear-gradient(to right, #7C3AED, #DB2777);
+    }
+    .services-faq {
+      margin-top: 6rem; /* Increased margin */
+      background: #FFFFFF;
+      padding: 3rem;
+      border-radius: 1.5rem;
+    }
+    .faq-item {
+      margin-bottom: 2.5rem;
+    }
+    .faq-question {
+      font-size: 1.25rem;
+      color: #6D28D9;
+      cursor: pointer;
+    }
+    .faq-answer {
+      color: #1F2937; /* Darkened for better contrast */
+      margin-top: 0.75rem;
+    }
+
+    /* Updated Testimonial Styles */
+    .testimonial-card {
+      background: linear-gradient(135deg, #F3F4F6, #E5E7EB);
+      border-radius: 1.5rem;
+      padding: 3rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonial-quote {
+      font-style: italic;
+      color: #1F2937; /* Darkened for better contrast */
+      margin-bottom: 1.5rem;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .author-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .author-name {
+      font-weight: bold;
+      color: #6D28D9;
+    }
+    .author-role {
+      color: #374151; /* Darkened for better contrast */
+    }
+    .testimonial-stars {
+      color: #FBBF24;
+      margin-bottom: 0.75rem;
+    }
+
+    /* New Portfolio Page Styles - Advanced Design */
+    .portfolio-container { 
+      max-width: 1200px; 
+      margin: 0 auto; 
+      padding: 3rem;
+    }
+    .portfolio-header {
+      text-align: center;
+      margin-bottom: 5rem; /* Increased for airiness */
+    }
+    .portfolio-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .filter-button {
+      background: #F3F4F6;
+      color: #1F2937; /* Darkened for better contrast */
+      padding: 0.75rem 1.25rem;
+      border-radius: 9999px;
+      transition: all 0.3s ease;
+    }
+    .filter-button:hover {
+      background: #8B5CF6;
+      color: white;
+    }
+    .filter-button.active {
+      background: linear-gradient(to right, #8B5CF6, #EC4899);
+      color: white;
+    }
+    .portfolio-masonry {
+      column-count: 1;
+      column-gap: 2.5rem; /* Increased gap */
+    }
+    @media (min-width: 768px) {
+      .portfolio-masonry {
+        column-count: 2;
+      }
+    }
+    @media (min-width: 1024px) {
+      .portfolio-masonry {
+        column-count: 3;
+      }
+    }
+    .portfolio-item {
+      break-inside: avoid;
+      margin-bottom: 2.5rem; /* Increased */
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+    }
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Darkened overlay for better text contrast */
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+    .portfolio-title {
+      color: #FFFFFF; /* White for high contrast on dark overlay */
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .portfolio-category {
+      color: #EC4899;
+      font-size: 0.875rem;
+      margin-bottom: 1.25rem;
+    }
+    .portfolio-details {
+      color: #FFFFFF; /* White for high contrast on dark overlay */
+      font-size: 0.875rem;
+    }
+    .portfolio-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 50;
+      padding: 1.5rem;
+    }
+    .modal-content {
+      background: #F3F4F6;
+      border-radius: 1.5rem;
+      max-width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 3rem;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      color: #EC4899;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .modal-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .modal-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .modal-tool-img {
+      max-height: 24px;
+      width: auto;
+    }
+
+    /* Mobile-specific styles */
+    @media (max-width: 640px) {
+      .navbar-menu { display: none; }
+      .navbar-menu.active { 
+        display: flex; 
+        flex-direction: column; 
+        position: absolute; 
+        top: 64px; 
+        left: 0; 
+        right: 0; 
+        background-color: #FFFFFF; 
+        padding: 1.5rem; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
+      }
+      .navbar-menu a { 
+        padding: 1.25rem 0; 
+        font-size: 1.1rem; 
+        text-align: center; 
+      }
+      .hamburger { display: block; }
+      .hero-section { 
+        height: auto; 
+        padding: 6rem 1.5rem; 
+      }
+      .hero-section h1 { 
+        font-size: 2.5rem; 
+        line-height: 1.2; 
+      }
+      .hero-section p { 
+        font-size: 1rem; 
+        max-width: 90%; 
+      }
+      .hero-buttons { 
+        flex-direction: column; 
+        gap: 1.5rem; 
+      }
+      .hero-buttons button, .hero-buttons a { 
+        width: 100%; 
+        padding: 1.25rem; 
+        font-size: 1rem; 
+      }
+      .section-grid { 
+        grid-template-columns: 1fr !important; 
+      }
+      .section-heading { 
+        font-size: 2.5rem; 
+      }
+      .card-img { 
+        height: 10rem !important; 
+      }
+      .form-input, .form-textarea { 
+        font-size: 0.9rem; 
+        padding: 0.75rem; 
+      }
+      .tools-grid { 
+        grid-template-columns: repeat(2, 1fr) !important; 
+      }
+      .tool-img { max-height: 30px; }
+      .service-item { 
+        padding: 2.5rem; 
+      }
+      .testimonial-card { 
+        padding: 2.5rem; 
+      }
+    }
+
+    /* Ensure hamburger icon visibility */
+    .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
+
+    /* New Advanced Services Page Styles */
+    .advanced-services-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 6rem 3rem; /* Increased padding */
+    }
+    .services-header {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+    .services-search {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      position: relative;
+    }
+    .services-search input {
+      width: 100%;
+      padding: 1.25rem 3.5rem 1.25rem 1.25rem;
+      background: #F3F4F6;
+      border: 1px solid #D1D5DB;
+      border-radius: 9999px;
+      color: #1F2937; /* Darkened for better contrast */
+      font-size: 1rem;
+    }
+    .services-search svg {
+      position: absolute;
+      right: 1.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9CA3AF;
+    }
+    .category-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+    .category-button {
+      background: #F3F4F6;
+      color: #1F2937; /* Darkened for better contrast */
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    .category-button:hover {
+      background: #D1D5DB;
+    }
+    .category-button.active {
+      background: linear-gradient(to right, #8B5CF6, #EC4899);
+      color: white;
+    }
+    .advanced-service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 4rem; /* Increased gap */
+    }
+    .advanced-service-card {
+      background: linear-gradient(135deg, #FFFFFF, #F3F4F6);
+      border-radius: 1.75rem;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+    .advanced-service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(139, 92, 246, 0.1);
+    }
+    .service-image-container {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+    .service-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .advanced-service-card:hover .service-image {
+      transform: scale(1.1);
+    }
+    .service-content {
+      padding: 3rem;
+    }
+    .service-category-tag {
+      display: inline-block;
+      background: rgba(139, 92, 246, 0.1);
+      color: #6D28D9;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+    .service-title {
+      font-size: 1.75rem;
+      color: #6D28D9;
+      margin-bottom: 1.5rem;
+    }
+    .service-desc {
+      color: #1F2937; /* Darkened for better contrast */
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .service-pricing {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      background: rgba(0,0,0,0.02);
+      border-radius: 1rem;
+    }
+    .pricing-tier {
+      font-size: 0.875rem;
+      color: #374151; /* Darkened for better contrast */
+    }
+    .pricing-amount {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #EC4899;
+    }
+    .service-features {
+      list-style-type: none;
+      margin-bottom: 3rem;
+    }
+    .service-features li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      color: #1F2937; /* Darkened for better contrast */
+      font-size: 1rem;
+    }
+    .service-features li::before {
+      content: '✓';
+      color: #8B5CF6;
+      margin-right: 1rem;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+    .service-cta-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .service-cta {
+      flex: 1;
+      text-align: center;
+      padding: 1.25rem;
+      border-radius: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .cta-primary {
+      background: linear-gradient(to right, #8B5CF6, #EC4899);
+      color: white;
+    }
+    .cta-primary:hover {
+      background: linear-gradient(to right, #7C3AED, #DB2777);
+    }
+    .cta-secondary {
+      border: 1px solid #8B5CF6;
+      color: #8B5CF6;
+    }
+    .cta-secondary:hover {
+      background: rgba(139, 92, 246, 0.05);
+    }
+    .service-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      padding: 3rem;
+    }
+    .modal-inner {
+      background: #F3F4F6;
+      border-radius: 1.75rem;
+      max-width: 1200px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 4rem;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    .modal-close {
+      position: absolute;
+      top: 1.75rem;
+      right: 1.75rem;
+      color: #EC4899;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .modal-close:hover {
+      transform: rotate(90deg);
+    }
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+    .modal-image {
+      width: 100%;
+      border-radius: 1.25rem;
+      margin-bottom: 3rem;
+    }
+    .modal-testimonials {
+      margin-top: 3rem;
+    }
+    .modal-testimonial {
+      background: rgba(0,0,0,0.02);
+      padding: 2.5rem;
+      border-radius: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .modal-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .modal-tool {
+      display: flex;
+      align-items: center;
+      background: rgba(0,0,0,0.02);
+      padding: 0.75rem 1.25rem;
+      border-radius: 9999px;
+      color: #1F2937; /* Darkened for better contrast */
+    }
+    .modal-tool img {
+      height: 20px;
+      margin-right: 1rem;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 1.5rem;
+      margin-top: 6rem;
+    }
+    .comparison-table th {
+      background: #F3F4F6;
+      padding: 2.5rem;
+      text-align: left;
+      color: #6D28D9;
+      font-size: 1.25rem;
+      border-radius: 1rem 1rem 0 0;
+    }
+    .comparison-table td {
+      background: #E5E7EB;
+      padding: 2rem;
+      color: #1F2937; /* Darkened for better contrast */
+      border-bottom: 1px solid #D1D5DB;
+    }
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+      border-radius: 0 0 1rem 1rem;
+    }
+    .comparison-highlight {
+      color: #EC4899;
+      font-weight: bold;
+    }
+    @media (max-width: 768px) {
+      .modal-grid {
+        grid-template-columns: 1fr;
+      }
+      .advanced-service-grid {
+        grid-template-columns: 1fr;
+      }
+      .service-cta-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body class="text-gray-900">
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    // Error Boundary Component
+    class ErrorBoundary extends React.Component {
+      state = { hasError: false };
+      static getDerivedStateFromError(error) {
+        return { hasError: true };
+      }
+      render() {
+        if (this.state.hasError) {
+          return <div className="text-center py-24 text-red-500 font-open-sans">Something went wrong. Please try refreshing the page.</div>;
+        }
+        return this.props.children;
+      }
+    }
+
+    const NavBar = ({ setView }) => {
+      const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+      return (
+        <nav className="bg-white text-gray-900 fixed w-full z-20 top-0 shadow-md">
+          <div className="container mx-auto px-4 py-5 flex justify-between items-center">
+            <a href="#home" className="flex items-center space-x-4" onClick={() => { setView('main'); setIsMenuOpen(false); }}>
+              <img
+                src="https://i.postimg.cc/HnF5j7Jr/f.png"
+                alt="North X Agency Logo"
+                className="h-12 object-contain hover-scale logo-hover"
+              />
+              <span className="text-xl sm:text-2xl font-bold font-montserrat gradient-text hover:gradient-text-hover transition">North X Agency</span>
+            </a>
+            <div className="hamburger md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              ☰
+            </div>
+            <div className={`navbar-menu md:flex md:space-x-10 font-open-sans text-base sm:text-lg ${isMenuOpen ? 'active' : ''}`}>
+              <a href="#home" className="hover:gradient-text-hover transition" onClick={() => { setView('main'); setIsMenuOpen(false); }}>Home</a>
+              <a href="#services" className="hover:gradient-text-hover transition" onClick={() => { setView('main'); setIsMenuOpen(false); }}>Services</a>
+              <a className="hover:gradient-text-hover transition cursor-pointer" onClick={() => { setView('portfolio'); setIsMenuOpen(false); }}>Portfolio</a>
+              <a href="#achievements" className="hover:gradient-text-hover transition" onClick={() => { setView('main'); setIsMenuOpen(false); }}>Achievements</a>
+              <a className="hover:gradient-text-hover transition cursor-pointer" onClick={() => { setView('blog'); setIsMenuOpen(false); }}>Blogs</a>
+              <a href="#contact" className="hover:gradient-text-hover transition" onClick={() => { setView('main'); setIsMenuOpen(false); }}>Contact</a>
+            </div>
+          </div>
+        </nav>
+      );
+    };
+
+    const Hero = ({ setView }) => (
+      <section id="home" className="bg-gradient-to-r from-white to-[#EDE9FE] text-gray-900 min-h-screen flex items-center justify-center animate-fadeIn hero-section">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-montserrat mb-8 text-purple-600">We can be your full-time virtual team</h1>
+          <p className="text-base sm:text-lg md:text-xl font-open-sans mb-10 max-w-2xl mx-auto text-gray-600">North X Agency is your partner in building a standout online presence and driving growth with high-quality leads. From Social Media Management to Web Development, we deliver tailored solutions with a personal touch, helping your business thrive in a competitive world.</p>
+          <div className="flex flex-col sm:flex-row justify-center space-y-5 sm:space-y-0 sm:space-x-5 hero-buttons">
+            <a href="https://wa.me/03276747558" target="_blank" rel="noopener noreferrer" className="gradient-button text-white px-8 py-4 rounded-lg font-open-sans text-base sm:text-lg hover:gradient-button transition hover-scale">Book a Call (03276747558)</a>
+            <button onClick={() => setView('portfolio')} className="gradient-button text-white px-8 py-4 rounded-lg font-open-sans text-base sm:text-lg hover:gradient-button transition hover-scale">Our Portfolio</button>
+          </div>
+        </div>
+      </section>
+    );
+
+    const ServicesShort = ({ setView }) => {
+      const services = [
+        { title: "Graphic Designing", description: "Crafting logos and visuals that tell your brand’s story with clarity and flair.", icon: "🎨" },
+        { title: "Lead Generation", description: "Finding the right leads to fuel your growth, backed by smart strategies.", icon: "📈" },
+        { title: "Social Media Management", description: "Building your online community with engaging content that feels authentic.", icon: "🌐" }
+      ];
+
+      return (
+        <section id="services" className="py-24 sm:py-32 bg-white"> {/* Increased padding */}
+          <div className="container mx-auto px-4 animate-slideUp">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-montserrat text-center mb-16 sm:mb-20 text-purple-600 section-heading">Our Services</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-16 section-grid"> {/* Increased gap */}
+              {services.map((service, index) => (
+                <div key={index} className="bg-white p-10 sm:p-12 rounded-xl shadow-md hover-scale border gradient-border">
+                  <div className="text-4xl sm:text-5xl mb-8 sm:mb-10 text-pink-600">{service.icon}</div>
+                  <h3 className="text-xl sm:text-2xl font-bold font-montserrat text-purple-600 mb-6">{service.title}</h3>
+                  <p className="text-gray-600 font-open-sans text-sm sm:text-base mb-8">{service.description}</p>
+                  <a href="#contact" className="text-pink-600 font-open-sans text-sm sm:text-base hover:gradient-text-hover">Request a Quote</a>
+                </div>
+              ))}
+            </div>
+            <div className="text-center mt-16 sm:mt-20">
+              <button onClick={() => setView('fullServices')} className="gradient-button text-white px-10 sm:px-12 py-5 sm:py-6 rounded-lg font-open-sans text-base sm:text-lg hover:gradient-button transition hover-scale">View All Services</button>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const tools = [
+      { name: "Adobe Photoshop", logo: "https://cdn.worldvectorlogo.com/logos/adobe-photoshop-2.svg" },
+      { name: "Adobe Illustrator", logo: "https://cdn.worldvectorlogo.com/logos/adobe-illustrator-cc-1.svg" },
+      { name: "Figma", logo: "https://cdn.worldvectorlogo.com/logos/figma-1.svg" },
+      { name: "Hootsuite", logo: "https://cdn.worldvectorlogo.com/logos/hootsuite-1.svg" },
+      { name: "Buffer", logo: "https://cdn.worldvectorlogo.com/logos/buffer-1.svg" },
+      { name: "Canva", logo: "https://cdn.worldvectorlogo.com/logos/canva-1.svg" },
+      { name: "Google Analytics", logo: "https://cdn.worldvectorlogo.com/logos/google-analytics-4.svg" },
+      { name: "HubSpot", logo: "https://cdn.worldvectorlogo.com/logos/hubspot-1.svg" },
+      { name: "Salesforce", logo: "https://cdn.worldvectorlogo.com/logos/salesforce-2.svg" },
+      { name: "Mailchimp", logo: "https://cdn.worldvectorlogo.com/logos/mailchimp-1.svg" },
+      { name: "Python", logo: "https://cdn.worldvectorlogo.com/logos/python-5.svg" },
+      { name: "Ahrefs", logo: "https://cdn.worldvectorlogo.com/logos/ahrefs.svg" },
+      { name: "SEMrush", logo: "https://cdn.worldvectorlogo.com/logos/semrush.svg" },
+      { name: "Blender", logo: "https://cdn.worldvectorlogo.com/logos/blender-1.svg" },
+      { name: "Maya", logo: "https://cdn.worldvectorlogo.com/logos/autodesk-maya-1.svg" },
+      { name: "Cinema 4D", logo: "https://cdn.worldvectorlogo.com/logos/cinema-4d.svg" },
+      { name: "React", logo: "https://cdn.worldvectorlogo.com/logos/react.svg" },
+      { name: "Node.js", logo: "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" },
+      { name: "WordPress", logo: "https://cdn.worldvectorlogo.com/logos/wordpress-icon.svg" },
+      { name: "LinkedIn", logo: "https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" },
+      { name: "Google Ads", logo: "https://cdn.worldvectorlogo.com/logos/google-ads-1.svg" },
+      { name: "Meta Ads", logo: "https://cdn.worldvectorlogo.com/logos/meta-1.svg" },
+      { name: "Instagram Insights", logo: "https://cdn.worldvectorlogo.com/logos/instagram-2016.svg" },
+      { name: "Zapier", logo: "https://cdn.worldvectorlogo.com/logos/zapier-1.svg" },
+      { name: "Hunter.io", logo: "https://cdn.worldvectorlogo.com/logos/hunterio.svg" },
+      { name: "BuzzSumo", logo: "https://cdn.worldvectorlogo.com/logos/buzzsumo.svg" },
+      { name: "DaVinci Resolve", logo: "https://cdn.worldvectorlogo.com/logos/davinci-resolve-1.svg" },
+      { name: "Adobe Premiere Pro", logo: "https://cdn.worldvectorlogo.com/logos/adobe-premiere-pro.svg" },
+      { name: "Sprout Social", logo: "https://cdn.worldvectorlogo.com/logos/sprout-social.svg" },
+      { name: "Yoast", logo: "https://cdn.worldvectorlogo.com/logos/yoast.svg" }
+    ];
+
+    const ToolsSection = () => (
+      <div className="mt-20">
+        <h3 className="text-3xl font-bold font-montserrat text-center mb-16 text-purple-600">Tools We Use</h3>
+        <p className="text-lg font-open-sans text-center mb-16 max-w-3xl mx-auto text-gray-600">
+          We harness the power of industry-leading tools to deliver top-notch results in SEO, lead generation, web development, and creative design, ensuring your projects are both innovative and effective.
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 mb-24 tools-grid"> {/* Increased gaps */}
+          {tools.map((tool, index) => (
+            <div key={index} className="bg-white p-8 rounded-lg shadow-md text-center border gradient-border hover-scale">
+              <img 
+                src={tool.logo} 
+                alt={`${tool.name} logo`} 
+                className="tool-img mx-auto mb-6" 
+                onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}
+              />
+              <p className="text-gray-600 font-open-sans text-sm" style={{ display: 'none' }}>{tool.name}</p>
+              <p className="text-gray-600 font-open-sans text-sm">{tool.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+
+    const FullServices = ({ setView }) => {
+      const servicesData = [
+        {
+          title: "Social Media Management",
+          category: "Marketing",
+          description: "We manage your social media channels to build authentic communities and drive engagement through strategic content and interaction.",
+          features: [
+            "Custom content calendars",
+            "Real-time engagement monitoring",
+            "Performance analytics and optimization",
+            "Community building strategies",
+            "Crisis management protocols",
+            "Collaborative content approval processes"
+          ],
+          benefits: "Increase brand loyalty and customer retention with a consistent online presence.",
+          caseStudy: "Helped a startup grow Instagram followers by 25% in six months.",
+          icon: "🌐",
+          image: "https://i.postimg.cc/RCG1X6fm/brand-social-media-strategy.jpg",
+          testimonials: [
+            { quote: "Transformed our social presence!", author: "Sarah T.", stars: "★★★★★" }
+          ],
+          tools: ["Hootsuite", "Buffer", "Sprout Social"]
+        },
+        {
+          title: "Content Creation & Posting",
+          category: "Marketing",
+          description: "Creating and scheduling high-quality content tailored to your audience for maximum reach and impact.",
+          features: [
+            "Trend-based content ideation",
+            "Professional visuals and videos",
+            "SEO-optimized captions",
+            "A/B testing for performance",
+            "Audience segmentation for targeted posting",
+            "Multi-platform optimization"
+          ],
+          benefits: "Boost website traffic and conversions with engaging, shareable content.",
+          caseStudy: "Increased client website traffic by 35% via Instagram reels.",
+          icon: "📝",
+          image: "https://i.postimg.cc/brQwV2Vh/social-media-campaign.jpg",
+          testimonials: [
+            { quote: "Content that converts!", author: "Mike C.", stars: "★★★★★" }
+          ],
+          tools: ["Canva", "Adobe Photoshop", "Instagram Insights"]
+        },
+        {
+          title: "Graphic Design",
+          category: "Design",
+          description: "Designing logos, branding materials, and graphics that capture your brand's unique identity.",
+          features: [
+            "Vision consultations and mood boards",
+            "Scalable vector designs",
+            "Iterative feedback process",
+            "Competitor analysis integration",
+            "High-resolution deliverables",
+            "Brand guideline development"
+          ],
+          benefits: "Enhance brand recognition and professional appeal.",
+          caseStudy: "Boosted brand recognition by 30% for a rebranded client.",
+          icon: "🎨",
+          image: "https://i.postimg.cc/02sQMcr2/tech-startup-branding.jpg",
+          testimonials: [
+            { quote: "Stunning designs that wow!", author: "Emily R.", stars: "★★★★★" }
+          ],
+          tools: ["Adobe Illustrator", "Figma", "Adobe Photoshop"]
+        },
+        {
+          title: "Video Editing",
+          category: "Design",
+          description: "Professional editing of videos to create compelling narratives that resonate with viewers.",
+          features: [
+            "Storyboarding and narrative planning",
+            "Advanced effects and sound design",
+            "Platform-specific optimization",
+            "High-quality rendering",
+            "Color grading and correction",
+            "Custom music integration"
+          ],
+          benefits: "Improve viewer retention and shareability of your video content.",
+          caseStudy: "Achieved 40% higher viewer retention for a corporate ad.",
+          icon: "✂️",
+          image: "https://i.postimg.cc/rwRSVfHy/corporate-video-ad.jpg",
+          testimonials: [
+            { quote: "Professional edits every time.", author: "David P.", stars: "★★★★★" }
+          ],
+          tools: ["Adobe Premiere Pro", "DaVinci Resolve"]
+        },
+        {
+          title: "Branding",
+          category: "Design",
+          description: "Developing comprehensive branding strategies including logos, color schemes, and guidelines.",
+          features: [
+            "Market research and workshops",
+            "Cohesive design elements",
+            "Brand manual creation",
+            "Implementation support",
+            "Visual identity audits",
+            "Ongoing brand evolution consulting"
+          ],
+          benefits: "Build trust and consistency across all touchpoints.",
+          caseStudy: "Increased customer loyalty by 25% post-rebrand.",
+          icon: "🛡️",
+          image: "https://i.postimg.cc/02sQMcr2/tech-startup-branding.jpg",
+          testimonials: [
+            { quote: "Complete brand transformation.", author: "Lisa W.", stars: "★★★★★" }
+          ],
+          tools: ["Figma", "Adobe Illustrator"]
+        },
+        {
+          title: "Targeted Contact & Influencer List Building",
+          category: "Lead Generation",
+          description: "Curating targeted lists for outreach and partnerships with ethical data practices.",
+          features: [
+            "Data mining and verification",
+            "Influencer identification",
+            "GDPR-compliant processes",
+            "Customized outreach templates",
+            "Relationship tracking",
+            "Performance metrics for lists"
+          ],
+          benefits: "Open doors to valuable partnerships and collaborations.",
+          caseStudy: "Secured partnerships boosting exposure by 50%.",
+          icon: "🔍",
+          image: "https://i.postimg.cc/m2YP8KKH/lead-campaign-jpeg.png",
+          testimonials: [
+            { quote: "High-quality lists that deliver.", author: "Robert K.", stars: "★★★★★" }
+          ],
+          tools: ["Hunter.io", "LinkedIn"]
+        },
+        {
+          title: "CRM Management",
+          category: "Lead Generation",
+          description: "Streamlining your CRM systems for efficient lead nurturing and sales tracking.",
+          features: [
+            "System setup and automation",
+            "Workflow design",
+            "Integration with tools",
+            "Performance reporting",
+            "Custom dashboard creation",
+            "Data security enhancements"
+          ],
+          benefits: "Reduce sales cycles and improve team efficiency.",
+          caseStudy: "Reduced sales cycles by 20% for a client.",
+          icon: "🗂️",
+          image: "https://i.postimg.cc/m2YP8KKH/lead-campaign-jpeg.png",
+          testimonials: [
+            { quote: "Streamlined our entire process.", author: "John D.", stars: "★★★★★" }
+          ],
+          tools: ["HubSpot", "Salesforce"]
+        },
+        {
+          title: "Email & Social Media Outreach",
+          category: "Marketing",
+          description: "Crafting personalized outreach campaigns to connect with prospects effectively.",
+          features: [
+            "Audience segmentation",
+            "Personalized content creation",
+            "A/B testing",
+            "Follow-up automation",
+            "Response tracking analytics",
+            "Compliance with regulations"
+          ],
+          benefits: "Higher response rates and better conversion opportunities.",
+          caseStudy: "Achieved 35% more responses in an outreach campaign.",
+          icon: "📧",
+          image: "https://i.postimg.cc/brQwV2Vh/social-media-campaign.jpg",
+          testimonials: [
+            { quote: "Effective outreach strategies.", author: "Anna L.", stars: "★★★★★" }
+          ],
+          tools: ["Mailchimp", "HubSpot"]
+        },
+        {
+          title: "Data Entry & Extraction",
+          category: "Development",
+          description: "Accurate data handling and extraction for actionable insights.",
+          features: [
+            "Automated extraction scripts",
+            "Manual verification",
+            "Data integration",
+            "Structured reporting",
+            "Data cleansing services",
+            "Real-time data updates"
+          ],
+          benefits: "Save time and ensure data reliability for decisions.",
+          caseStudy: "Saved clients 10+ hours weekly with clean data.",
+          icon: "📊",
+          image: "https://i.postimg.cc/m2YP8KKH/lead-campaign-jpeg.png",
+          testimonials: [
+            { quote: "Accurate and efficient.", author: "Tom B.", stars: "★★★★★" }
+          ],
+          tools: ["Python", "Zapier"]
+        },
+        {
+          title: "Python Scraping",
+          category: "Development",
+          description: "Ethical web data collection and structuring for competitive insights.",
+          features: [
+            "Custom Python scripts",
+            "Ethical compliance",
+            "Data organization",
+            "Timely delivery",
+            "Scalable scraping solutions",
+            "Error handling and retries"
+          ],
+          benefits: "Gain market advantages with fresh, usable data.",
+          caseStudy: "Reduced research time by 80% for a client.",
+          icon: "🐍",
+          image: "https://i.postimg.cc/m2YP8KKH/lead-campaign-jpeg.png",
+          testimonials: [
+            { quote: "Ethical and powerful scraping.", author: "Sara M.", stars: "★★★★★" }
+          ],
+          tools: ["Python"]
+        },
+        {
+          title: "Internet Research",
+          category: "Lead Generation",
+          description: "In-depth research to uncover market insights and opportunities.",
+          features: [
+            "Objective scoping",
+            "Advanced search tools",
+            "Data synthesis",
+            "Clear reporting",
+            "Trend analysis",
+            "Competitor benchmarking"
+          ],
+          benefits: "Inform strategies with reliable, comprehensive data.",
+          caseStudy: "Guided 20+ clients to smarter business decisions.",
+          icon: "🌍",
+          image: "https://i.postimg.cc/m2YP8KKH/lead-campaign-jpeg.png",
+          testimonials: [
+            { quote: "Invaluable insights.", author: "Paul G.", stars: "★★★★★" }
+          ],
+          tools: ["Ahrefs", "SEMrush"]
+        },
+        {
+          title: "Lead Generation",
+          category: "Lead Generation",
+          description: "Targeted campaigns to attract high-quality leads for your business.",
+          features: [
+            "Prospect targeting",
+            "Multi-channel ads",
+            "Lead nurturing workflows",
+            "Performance analytics",
+            "Lead scoring systems",
+            "Integration with CRM tools"
+          ],
+          benefits: "Fuel growth with convertible leads.",
+          caseStudy: "Generated 500+ leads in three months, boosting conversions by 20%.",
+          icon: "📈",
+          image: "https://i.postimg.cc/m2YP8KKH/lead-campaign-jpeg.png",
+          testimonials: [
+            { quote: "Leads that convert!", author: "Rachel H.", stars: "★★★★★" }
+          ],
+          tools: ["Google Ads", "LinkedIn", "HubSpot"]
+        },
+        {
+          title: "3D Animation",
+          category: "Design",
+          description: "Creating immersive 3D animations to showcase products and ideas.",
+          features: [
+            "Detailed storyboarding",
+            "High-quality rendering",
+            "Client iterations",
+            "Platform optimization",
+            "Motion capture integration",
+            "Custom asset creation"
+          ],
+          benefits: "Captivate audiences with visual storytelling.",
+          caseStudy: "Increased engagement by 35% in a product campaign.",
+          icon: "🎥",
+          image: "https://i.postimg.cc/SxVJpCSQ/product-animation.jpg",
+          testimonials: [
+            { quote: "Breathtaking animations.", author: "Mark S.", stars: "★★★★★" }
+          ],
+          tools: ["Blender", "Maya", "Cinema 4D"]
+        },
+        {
+          title: "Web Development",
+          category: "Development",
+          description: "Building responsive, scalable websites optimized for performance.",
+          features: [
+            "User-focused wireframing",
+            "Modern tech stack",
+            "SEO implementation",
+            "Cross-device testing",
+            "Security enhancements",
+            "Performance optimization"
+          ],
+          benefits: "Drive user engagement and conversions.",
+          caseStudy: "Boosted e-commerce sales by 25%.",
+          icon: "💻",
+          image: "https://i.postimg.cc/WzKhxvTG/ecommerce-website.jpg",
+          testimonials: [
+            { quote: "Robust and beautiful sites.", author: "Laura K.", stars: "★★★★★" }
+          ],
+          tools: ["React", "Node.js", "WordPress"]
+        },
+        {
+          title: "Social Media Marketing",
+          category: "Marketing",
+          description: "Strategic campaigns to amplify your brand on social platforms.",
+          features: [
+            "Targeted ad creation",
+            "Content strategy development",
+            "Campaign monitoring",
+            "Engagement boosting",
+            "Influencer collaborations",
+            "ROI tracking and reporting"
+          ],
+          benefits: "Grow your audience and generate leads.",
+          caseStudy: "Boosted engagement by 40% in a campaign.",
+          icon: "📱",
+          image: "https://i.postimg.cc/brQwV2Vh/social-media-campaign.jpg",
+          testimonials: [
+            { quote: "Campaigns that deliver ROI.", author: "James T.", stars: "★★★★★" }
+          ],
+          tools: ["Meta Ads", "Google Ads", "Sprout Social"]
+        },
+        {
+          title: "SEO",
+          category: "Marketing",
+          description: "Optimizing your online presence for better search visibility.",
+          features: [
+            "Keyword research",
+            "On-page optimization",
+            "Link building",
+            "Ranking tracking",
+            "Technical SEO audits",
+            "Content strategy for SEO"
+          ],
+          benefits: "Attract organic traffic and improve rankings.",
+          caseStudy: "Increased site traffic by 50%.",
+          icon: "🔎",
+          image: "https://i.postimg.cc/brQwV2Vh/social-media-campaign.jpg",
+          testimonials: [
+            { quote: "Top rankings achieved.", author: "Sophie L.", stars: "★★★★★" }
+          ],
+          tools: ["Ahrefs", "SEMrush", "Yoast"]
+        }
+      ];
+
+      const faqs = [
+        { question: "How do I get started with a service?", answer: "Contact us via the form or book a call to discuss your needs and get a custom quote." },
+        { question: "What is the typical timeline for projects?", answer: "Timelines vary by service, but most projects start within 1-2 weeks and complete in 4-12 weeks." },
+        { question: "Do you offer packages or custom pricing?", answer: "We provide flexible pricing with standard packages and custom options based on your requirements." },
+        { question: "Can I see examples of your work?", answer: "Yes, check our portfolio or request specific case studies during consultation." },
+        { question: "What if I need revisions?", answer: "We include multiple revision rounds in our process to ensure satisfaction." }
+      ];
+
+      const categories = ['All', ...new Set(servicesData.map(s => s.category))];
+
+      const [searchQuery, setSearchQuery] = useState('');
+      const [activeCategory, setActiveCategory] = useState('All');
+      const [selectedService, setSelectedService] = useState(null);
+
+      const filteredServices = servicesData.filter(service => {
+        const matchesCategory = activeCategory === 'All' || service.category === activeCategory;
+        const matchesSearch = service.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              service.description.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+      });
+
+      return (
+        <section className="py-24 sm:py-32 bg-white"> {/* Increased padding */}
+          <div className="advanced-services-container animate-slideUp">
+            <button onClick={() => setView('main')} className="text-gray-900 font-open-sans mb-10 sm:mb-12 hover:text-purple-500 text-sm sm:text-base">← Back to Home</button>
+            <div className="services-header">
+              <h2 className="text-4xl md:text-6xl font-bold font-montserrat text-center mb-10 text-gray-900">Comprehensive Services Suite</h2>
+              <p className="text-xl font-open-sans text-center mb-12 max-w-4xl mx-auto text-gray-600">Empowering enterprises with AI-driven, scalable solutions. Filter, search, and explore our premium offerings tailored for digital transformation.</p>
+            </div>
+            <div className="services-search">
+              <input 
+                type="text" 
+                placeholder="Search services (e.g., SEO, Animation)..." 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+            <div className="category-filters">
+              {categories.map((cat, index) => (
+                <button 
+                  key={index} 
+                  onClick={() => setActiveCategory(cat)}
+                  className={`category-button ${activeCategory === cat ? 'active' : ''}`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <div className="advanced-service-grid">
+              {filteredServices.map((service, index) => (
+                <div key={index} className="advanced-service-card" onClick={() => setSelectedService(service)}>
+                  <div className="service-image-container">
+                    <img src={service.image} alt={service.title} className="service-image" />
+                  </div>
+                  <div className="service-content">
+                    <span className="service-category-tag">{service.category}</span>
+                    <h3 className="service-title">{service.title}</h3>
+                    <p className="service-desc">{service.description}</p>
+                    <ul className="service-features">
+                      {service.features.slice(0, 3).map((feature, idx) => (
+                        <li key={idx}>{feature}</li>
+                      ))}
+                    </ul>
+                    <div className="service-cta-container">
+                      <a href="#contact" className="service-cta cta-primary">Get Quote</a>
+                      <button className="service-cta cta-secondary" onClick={(e) => { e.stopPropagation(); setSelectedService(service); }}>Learn More</button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Service Comparison Table */}
+            <div className="mt-24">
+              <h3 className="text-3xl font-bold font-montserrat text-center mb-16 text-gray-900">Service Comparison</h3>
+              <table className="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Service</th>
+                    <th>Category</th>
+                    <th>Key Benefit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredServices.map((service, index) => (
+                    <tr key={index}>
+                      <td className="comparison-highlight">{service.title}</td>
+                      <td>{service.category}</td>
+                      <td>{service.benefits}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* FAQs with Accordion */}
+            <div className="services-faq mt-24">
+              <h3 className="text-3xl font-bold font-montserrat text-center mb-16 text-gray-900">Frequently Asked Questions</h3>
+              {faqs.map((faq, index) => (
+                <div key={index} className="faq-item">
+                  <h4 className="faq-question">{faq.question}</h4>
+                  <p className="faq-answer">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+
+            <ToolsSection />
+
+            <div className="text-center mt-24">
+              <a href="https://wa.me/03276747558" target="_blank" rel="noopener noreferrer" className="gradient-button text-white px-12 py-6 rounded-lg font-open-sans text-lg hover:gradient-button transition hover-scale">Schedule Enterprise Consultation</a>
+            </div>
+
+            {selectedService && (
+              <div className="service-modal" onClick={() => setSelectedService(null)}>
+                <div className="modal-inner" onClick={e => e.stopPropagation()}>
+                  <span className="modal-close" onClick={() => setSelectedService(null)}>×</span>
+                  <div className="modal-grid">
+                    <div>
+                      <img src={selectedService.image} alt={selectedService.title} className="modal-image" />
+                      <div className="modal-testimonials">
+                        <h4 className="text-xl font-bold text-purple-600 mb-8">Client Testimonials</h4>
+                        {selectedService.testimonials.map((test, idx) => (
+                          <div key={idx} className="modal-testimonial">
+                            <p className="testimonial-stars">{test.stars}</p>
+                            <p className="testimonial-quote">"{test.quote}"</p>
+                            <p className="author-name">{test.author}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-3xl font-bold text-purple-600 mb-8">{selectedService.title}</h3>
+                      <span className="service-category-tag mb-10 inline-block">{selectedService.category}</span>
+                      <p className="service-desc mb-10">{selectedService.description}</p>
+                      <ul className="service-features mb-10">
+                        {selectedService.features.map((feature, idx) => (
+                          <li key={idx}>{feature}</li>
+                        ))}
+                      </ul>
+                      <p className="text-gray-600 mb-8"><strong>Key Benefits:</strong> {selectedService.benefits}</p>
+                      <p className="text-gray-600 mb-10"><strong>Case Study:</strong> {selectedService.caseStudy}</p>
+                      <div className="modal-tools">
+                        {selectedService.tools.map((toolName, idx) => {
+                          const tool = tools.find(t => t.name === toolName);
+                          return tool ? (
+                            <div key={idx} className="modal-tool">
+                              <img src={tool.logo} alt={tool.name} />
+                              {tool.name}
+                            </div>
+                          ) : null;
+                        })}
+                      </div>
+                      <div className="mt-12 flex gap-8">
+                        <a href="#contact" className="service-cta cta-primary flex-1">Request Proposal</a>
+                        <a href="https://wa.me/03276747558" target="_blank" rel="noopener noreferrer" className="service-cta cta-secondary flex-1">Book Demo</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      );
+    };
+
+    const PortfolioPage = ({ setView }) => {
+      const portfolioItems = [
+        { 
+          title: "Tech Startup Branding", 
+          category: "Graphic Designing", 
+          description: "We partnered with a SaaS startup to create a logo and branding kit that felt fresh and innovative. Through in-depth consultations and iterative designs, we crafted visuals that boosted their brand recognition by 30%. It’s like giving their business a bold, memorable handshake that resonates with their audience.", 
+          details: {
+            client: "TechTrend Innovations",
+            duration: "2 months",
+            challenge: "Create a unique brand identity in a competitive tech market.",
+            solution: "Developed a modern logo, color palette, and typography, tested through focus groups."
+          },
+          img: "https://i.postimg.cc/02sQMcr2/tech-startup-branding.jpg",
+          driveLink: "https://drive.google.com/drive/u/4/folders/1E1sj6pWhzXYZiljbiE4DaaBr1x0vAlW_",
+          tools: ["Adobe Photoshop", "Adobe Illustrator", "Figma"]
+        },
+        { 
+          title: "Product Animation", 
+          category: "3D Animation", 
+          description: "For an e-commerce client, we brought their product to life with a 3D animation that felt immersive and real. Storyboarding and client feedback ensured every detail popped, leading to a 35% spike in campaign engagement. It’s like showing customers the product in their hands before they buy.", 
+          details: {
+            client: "Visionary Ventures",
+            duration: "6 weeks",
+            challenge: "Showcase product features in an engaging format.",
+            solution: "Created a 3D animation with interactive elements for social media and website."
+          },
+          img: "https://i.postimg.cc/SxVJpCSQ/product-animation.jpg",
+          driveLink: "https://drive.google.com/drive/folders/1mICkg4_ljzxb7YBJto7brRTKrTv7DYQ5?usp=sharing",
+          tools: ["Blender", "Maya", "Adobe After Effects"]
+        },
+        { 
+          title: "E-commerce Website", 
+          category: "Web Development", 
+          description: "We built a responsive e-commerce site that felt like a welcoming digital store. With wireframing, user-focused design, and SEO optimization, we increased sales by 25%. It’s the kind of site that makes shopping effortless and enjoyable for customers.", 
+          details: {
+            client: "ShopSmart Retail",
+            duration: "3 months",
+            challenge: "Improve user experience and conversion rates.",
+            solution: "Developed a responsive site with React and integrated payment gateways."
+          },
+          img: "https://i.postimg.cc/WzKhxvTG/ecommerce-website.jpg",
+          driveLink: "https://drive.google.com/",
+          tools: ["React", "WordPress", "Yoast"]
+        },
+        { 
+          title: "Social Media Campaign", 
+          category: "Social Media Marketing", 
+          description: "Our Instagram campaign for a client turned heads, boosting engagement by 40%. By diving into audience insights and crafting authentic content, we made their brand feel like a friend to followers, driving real connections and results.", 
+          details: {
+            client: "BrandBoost Media",
+            duration: "4 months",
+            challenge: "Increase engagement on Instagram.",
+            solution: "Launched targeted ad campaigns with Instagram Insights and custom content."
+          },
+          img: "https://i.postimg.cc/brQwV2Vh/social-media-campaign.jpg",
+          driveLink: "https://drive.google.com/",
+          tools: ["Instagram Insights", "Meta Ads", "Canva"]
+        },
+        { 
+          title: "Corporate Video Ad", 
+          category: "Video Editing", 
+          description: "We edited a corporate ad that told a compelling story, increasing viewer engagement by 40%. With precise cuts and effects, we made their message feel personal and impactful, like a conversation that sticks with you.", 
+          details: {
+            client: "Corporate Connect",
+            duration: "5 weeks",
+            challenge: "Create a compelling corporate ad within budget.",
+            solution: "Edited footage with Adobe Premiere Pro, adding motion graphics and sound design."
+          },
+          img: "https://i.postimg.cc/rwRSVfHy/corporate-video-ad.jpg",
+          driveLink: "https://drive.google.com/",
+          tools: ["Adobe Premiere Pro", "Adobe After Effects", "DaVinci Resolve"]
+        },
+        { 
+          title: "Brand Social Media Strategy", 
+          category: "Social Media Management", 
+          description: "We managed a startup’s social channels, growing their followers by 25% in six months. With a custom content calendar and daily engagement, we built a community that feels alive and connected, like a digital home for their audience.", 
+          details: {
+            client: "GrowEasy Solutions",
+            duration: "6 months",
+            challenge: "Build a social media presence from scratch.",
+            solution: "Implemented a content strategy with Hootsuite and daily engagement."
+          },
+          img: "https://i.postimg.cc/RCG1X6fm/brand-social-media-strategy.jpg",
+          driveLink: "https://drive.google.com/",
+          tools: ["Hootsuite", "Buffer", "Sprout Social"]
+        },
+        { 
+          title: "CRM Lead Campaign", 
+          category: "Lead Generation", 
+          description: "Our CRM-integrated campaign delivered 500+ leads in three months, with a 20% conversion boost. By targeting the right prospects and nurturing them with care, we turned data into opportunities, like finding the perfect match for your business.", 
+          details: {
+            client: "LeadGen Pros",
+            duration: "3 months",
+            challenge: "Generate high-quality leads quickly.",
+            solution: "Used HubSpot and LinkedIn Ads for targeted lead generation."
+          },
+          img: "https://i.postimg.cc/m2YP8KKH/lead-campaign-jpeg.png",
+          driveLink: "https://drive.google.com/drive/folders/1h97KvAvvaqLpMQd5N5yvdQFd2Snh8VpT",
+          tools: ["HubSpot", "LinkedIn", "Google Ads"]
+        }
+      ];
+
+      const [activeFilter, setActiveFilter] = useState('All');
+      const [selectedItem, setSelectedItem] = useState(null);
+
+      const categories = ['All', ...new Set(portfolioItems.map(item => item.category))];
+
+      const filteredItems = activeFilter === 'All' 
+        ? portfolioItems 
+        : portfolioItems.filter(item => item.category === activeFilter);
+
+      return (
+        <section className="py-24 sm:py-32 bg-white"> {/* Increased padding */}
+          <div className="portfolio-container animate-slideUp">
+            <button onClick={() => setView('main')} className="text-gray-900 font-open-sans mb-10 hover:text-purple-500 text-base">← Back to Home</button>
+            <div className="portfolio-header">
+              <h2 className="text-4xl md:text-5xl font-bold font-montserrat text-purple-600 mb-8">Our Portfolio</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">Explore our diverse projects showcasing creativity and innovation across various categories. Click on any item for details.</p>
+            </div>
+            <div className="portfolio-filters">
+              {categories.map((cat, index) => (
+                <button 
+                  key={index} 
+                  onClick={() => setActiveFilter(cat)}
+                  className={`filter-button ${activeFilter === cat ? 'active' : ''}`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <div className="portfolio-masonry">
+              {filteredItems.map((item, index) => (
+                <div 
+                  key={index} 
+                  className="portfolio-item" 
+                  onClick={() => setSelectedItem(item)}
+                >
+                  <img 
+                    src={item.img} 
+                    alt={item.title} 
+                    className="w-full"
+                    onError={(e) => { e.target.style.display = 'none'; }}
+                  />
+                  <div className="portfolio-overlay">
+                    <h3 className="portfolio-title">{item.title}</h3>
+                    <p className="portfolio-category">{item.category}</p>
+                    <p className="portfolio-details">{item.description.substring(0, 100)}...</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {selectedItem && (
+              <div className="portfolio-modal" onClick={() => setSelectedItem(null)}>
+                <div className="modal-content" onClick={e => e.stopPropagation()}>
+                  <span className="modal-close" onClick={() => setSelectedItem(null)}>×</span>
+                  <img src={selectedItem.img} alt={selectedItem.title} className="modal-img" />
+                  <h3 className="text-2xl font-bold text-purple-600 mb-6">{selectedItem.title}</h3>
+                  <p className="text-gray-600 mb-6"><strong>Category:</strong> {selectedItem.category}</p>
+                  <p className="text-gray-600 mb-8">{selectedItem.description}</p>
+                  <div className="text-gray-600 mb-8">
+                    <p><strong>Client:</strong> {selectedItem.details.client}</p>
+                    <p><strong>Duration:</strong> {selectedItem.details.duration}</p>
+                    <p><strong>Challenge:</strong> {selectedItem.details.challenge}</p>
+                    <p><strong>Solution:</strong> {selectedItem.details.solution}</p>
+                  </div>
+                  <div className="modal-tools">
+                    {selectedItem.tools.map((toolName, idx) => {
+                      const tool = tools.find(t => t.name === toolName);
+                      return tool ? (
+                        <img 
+                          key={idx} 
+                          src={tool.logo} 
+                          alt={`${tool.name} logo`} 
+                          className="modal-tool-img" 
+                          onError={(e) => { e.target.style.display = 'none'; }}
+                        />
+                      ) : null;
+                    })}
+                  </div>
+                  <div className="mt-8">
+                    <a href={selectedItem.driveLink} target="_blank" rel="noopener noreferrer" className="gradient-button text-white px-8 py-4 rounded-lg inline-block">View on Google Drive</a>
+                  </div>
+                </div>
+              </div>
+            )}
+            <ToolsSection />
+          </div>
+        </section>
+      );
+    };
+
+    const Achievements = () => (
+      <section id="achievements" className="py-24 sm:py-32 bg-white"> {/* Increased padding */}
+        <div className="container mx-auto px-4 animate-slideUp">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-montserrat text-center mb-16 sm:mb-20 text-purple-600 section-heading">Our Achievements</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 sm:gap-16 section-grid"> {/* Increased gap */}
+            {[
+              { metric: "150+", description: "Projects Delivered" },
+              { metric: "50+", description: "Happy Clients" },
+              { metric: "10+", description: "Industry Awards" },
+              { metric: "98%", description: "Client Satisfaction Rate" }
+            ].map((achievement, index) => (
+              <div key={index} className="bg-white p-8 sm:p-10 rounded-xl shadow-md text-center border gradient-border">
+                <h3 className="text-2xl sm:text-3xl font-bold font-montserrat text-pink-600">{achievement.metric}</h3>
+                <p className="text-gray-600 font-open-sans text-sm sm:text-base mt-4">{achievement.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-16 sm:mt-20">
+            <h3 className="text-xl sm:text-2xl font-bold font-montserrat text-center mb-12 sm:mb-16 text-purple-600">Client Testimonials</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-16 section-grid"> {/* Increased gap */}
+              {[
+                { 
+                  quote: "North X Agency revolutionized our social media strategy. Their team managed our channels flawlessly, resulting in a 40% increase in engagement and real business growth. Highly recommend!", 
+                  author: "Sarah Thompson", 
+                  role: "Marketing Director, TechTrend Innovations", 
+                  img: "https://randomuser.me/api/portraits/women/44.jpg", 
+                  stars: "★★★★★" 
+                },
+                { 
+                  quote: "The lead generation campaign was spot on. We received high-quality leads that converted quickly, exceeding our expectations. Professional and results-driven service!", 
+                  author: "Michael Chen", 
+                  role: "CEO, GrowEasy Solutions", 
+                  img: "https://randomuser.me/api/portraits/men/32.jpg", 
+                  stars: "★★★★★" 
+                },
+                { 
+                  quote: "Their 3D animation brought our product vision to life in ways we couldn't imagine. The attention to detail and creativity were outstanding, leading to rave reviews from our customers.", 
+                  author: "Emily Rodriguez", 
+                  role: "Product Manager, Visionary Ventures", 
+                  img: "https://randomuser.me/api/portraits/women/65.jpg", 
+                  stars: "★★★★★" 
+                },
+                { 
+                  quote: "Web development project was delivered on time and budget. The site is user-friendly and has significantly improved our online sales. Great communication throughout!", 
+                  author: "David Patel", 
+                  role: "Founder, ShopSmart Retail", 
+                  img: "https://randomuser.me/api/portraits/men/78.jpg", 
+                  stars: "★★★★★" 
+                },
+                { 
+                  quote: "Video editing transformed our raw footage into a polished masterpiece. It captured our brand essence perfectly and boosted our marketing efforts tremendously.", 
+                  author: "Lisa Wong", 
+                  role: "Creative Lead, Corporate Connect", 
+                  img: "https://randomuser.me/api/portraits/women/12.jpg", 
+                  stars: "★★★★★" 
+                },
+                { 
+                  quote: "Branding services gave our company a fresh, professional look. The team's expertise and collaborative approach made the process smooth and enjoyable.", 
+                  author: "Robert Klein", 
+                  role: "Owner, BrandBoost Media", 
+                  img: "https://randomuser.me/api/portraits/men/45.jpg", 
+                  stars: "★★★★★" 
+                }
+              ].map((testimonial, index) => (
+                <div key={index} className="testimonial-card">
+                  <p className="testimonial-stars">{testimonial.stars}</p>
+                  <p className="testimonial-quote">"{testimonial.quote}"</p>
+                  <div className="testimonial-author">
+                    <img src={testimonial.img} alt={testimonial.author} className="author-img" />
+                    <div>
+                      <p className="author-name">{testimonial.author}</p>
+                      <p className="author-role">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    const WhyChooseUs = ({ setView }) => (
+      <section id="why-choose-us" className="py-24 sm:py-32 bg-white"> {/* Increased padding */}
+        <div className="container mx-auto px-4 animate-slideUp">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-montserrat text-center mb-16 sm:mb-20 text-purple-600 section-heading">Why Choose Us?</h2>
+          <p className="text-sm sm:text-lg font-open-sans text-center mb-12 sm:mb-16 max-w-3xl mx-auto text-gray-600">
+            At North X Agency, we’re your full-time virtual team, blending creativity and data to deliver results that feel personal and powerful. From startups to enterprises, we craft solutions that drive growth and make your brand stand out.
+          </p>
+          <p className="text-sm sm:text-lg font-open-sans text-center mb-20 sm:mb-24 max-w-3xl mx-auto text-gray-600">
+            📲 WhatsApp: +923276747558<br/>
+            📧 Email: rehman@northxagency.com
+          </p>
+          <div className="text-center mt-16 sm:mt-20">
+            <button onClick={() => setView('whyChooseUsDetails')} className="gradient-button text-white px-10 sm:px-12 py-5 sm:py-6 rounded-lg font-open-sans text-base sm:text-lg hover:gradient-button transition hover-scale">Learn More About Why Us</button>
+          </div>
+        </div>
+      </section>
+    );
+
+    const WhyChooseUsDetails = ({ setView }) => {
+      const reasons = [
+        { 
+          icon: "💰", 
+          title: "Affordable Pricing", 
+          description: "Premium services at prices that work for any budget, ensuring startups and businesses get top-tier results without breaking the bank.",
+          details: "Our pricing models include tiered packages starting from $500/month for basic services, with custom quotes for enterprise needs. Enjoy flexible payment options and no hidden fees."
+        },
+        { 
+          icon: "🏆", 
+          title: "Proven Track Record", 
+          description: "Over 150 projects delivered worldwide, with measurable outcomes that have transformed businesses and driven growth.",
+          details: "We've worked with industries from tech to retail, achieving an average 35% growth in client metrics. Check our case studies for real-world examples."
+        },
+        { 
+          icon: "🤝", 
+          title: "Trusted by 50+ Clients", 
+          description: "With a 98% satisfaction rate, our transparent and timely approach builds lasting partnerships and repeat business.",
+          details: "Our clients include Fortune 500 companies and innovative startups. We maintain long-term relationships through dedicated account managers and regular updates."
+        },
+        { 
+          icon: "🌍", 
+          title: "24/7 Availability", 
+          description: "We’re always on, supporting your business across time zones to seize every opportunity, no matter where you are.",
+          details: "With team members in multiple time zones, we ensure round-the-clock support. Emergency response within 2 hours guaranteed."
+        },
+        { 
+          icon: "📊", 
+          title: "Data-Driven Strategies", 
+          description: "Our tailored campaigns use analytics and A/B testing to maximize ROI, making every move count for your success.",
+          details: "Leveraging tools like Google Analytics and Ahrefs, we provide monthly reports showing clear ROI. Average client ROI: 5x investment."
+        },
+        { 
+          icon: "🚀", 
+          title: "Cutting-Edge Innovation", 
+          description: "We leverage the latest tools and tech to deliver forward-thinking solutions that keep your brand ahead of the curve.",
+          details: "From AI-powered content creation to VR experiences, we integrate emerging tech. Recent innovation: AI chatbots increasing lead capture by 45%."
+        }
+      ];
+
+      const faqs = [
+        { question: "What sets North X Agency apart?", answer: "We’re your full-time virtual team, blending creativity and data with 24/7 support to deliver results that feel personal and drive growth." },
+        { question: "How do you ensure quality?", answer: "Through proven processes, client feedback, and analytics, we deliver exceptional outcomes with transparency every step of the way." },
+        { question: "Can you handle large projects?", answer: "Absolutely—our scalable solutions cater to startups and enterprises alike, tailored to any scope or budget." },
+        { question: "What’s your pricing like?", answer: "We offer flexible, affordable pricing—reach out for a custom quote that fits your needs." },
+        { question: "How do we start?", answer: "Book a call via WhatsApp or email, and let’s discuss how we can kickstart your success." }
+      ];
+
+      const stats = [
+        { value: "98%", label: "Client Satisfaction" },
+        { value: "150+", label: "Projects Completed" },
+        { value: "50+", label: "Global Clients" },
+        { value: "5x", label: "Average ROI" }
+      ];
+
+      return (
+        <section className="py-24 sm:py-32 bg-white"> {/* Increased padding */}
+          <div className="container mx-auto px-4 animate-slideUp">
+            <button onClick={() => setView('main')} className="text-pink-600 font-open-sans mb-10 sm:mb-12 hover:gradient-text-hover text-sm sm:text-base">← Back to Home</button>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-montserrat text-center mb-16 sm:mb-20 text-purple-600 section-heading">Why Choose North X Agency?</h2>
+            <p className="text-sm sm:text-lg font-open-sans text-center mb-20 sm:mb-24 max-w-3xl mx-auto text-gray-600">Discover the exciting reasons that make us the preferred partner for businesses worldwide. From innovative solutions to unmatched support, we're here to supercharge your success!</p>
+            
+            {/* Exciting Stats Section Section */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-12 sm:gap-16 mb-20 sm:mb-24"> {/* Increased gaps */}
+              {stats.map((stat, index) => (
+                <div key={index} className="bg-white p-8 sm:p-10 rounded-xl shadow-md text-center border gradient-border">
+                  <h3 className="text-3xl sm:text-4xl font-bold font-montserrat text-pink-600 mb-4">{stat.value}</h3>
+                  <p className="text-gray-600 font-open-sans text-sm sm:text-base">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+            
+            {/* Reasons Grid with More Details */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-16 mb-20 sm:mb-24 section-grid"> {/* Increased gaps */}
+              {reasons.map((reason, index) => (
+                <div key={index} className="bg-white p-8 sm:p-10 rounded-xl shadow-md border gradient-border">
+                  <div className="text-4xl sm:text-5xl mb-8 text-pink-600">{reason.icon}</div>
+                  <h3 className="text-lg sm:text-2xl font-bold font-montserrat text-purple-600 mb-6">{reason.title}</h3>
+                  <p className="text-gray-600 font-open-sans text-sm sm:text-base mb-8">{reason.description}</p>
+                  <p className="text-gray-600 font-open-sans text-sm sm:text-base italic">{reason.details}</p>
+                </div>
+              ))}
+            </div>
+            
+            {/* FAQs */}
+            <h3 className="text-2xl sm:text-3xl font-bold font-montserrat text-center mb-12 sm:mb-16 text-purple-600">Frequently Asked Questions</h3>
+            <div className="max-w-3xl mx-auto">
+              {faqs.map((faq, index) => (
+                <div key={index} className="mb-8 sm:mb-10">
+                  <h4 className="text-lg sm:text-xl font-bold font-montserrat text-pink-600 mb-6">{faq.question}</h4>
+                  <p className="text-gray-600 font-open-sans text-sm sm:text-base">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+            
+            {/* Exciting Additions: Call to Action with Video Placeholder */}
+            <div className="mt-20 text-center">
+              <h3 className="text-2xl font-bold font-montserrat mb-12 text-purple-600">Watch Our Success Stories</h3>
+              <div className="bg-white p-8 rounded-xl max-w-4xl mx-auto shadow-md">
+                <p className="text-gray-600 mb-8">Embed a video here showcasing client success stories and behind-the-scenes excitement!</p>
+                {/* Placeholder for video */}
+                <div className="bg-gray-100 h-64 flex items-center justify-center">
+                  <p className="text-gray-600">Video Player Placeholder</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="text-center mt-20">
+              <a href="https://wa.me/03276747558" target="_blank" rel="noopener noreferrer" className="gradient-button text-white px-10 sm:px-12 py-5 sm:py-6 rounded-lg font-open-sans text-base sm:text-lg hover:gradient-button transition hover-scale">📧 Contact Us & Start Your Success Story</a>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const About = () => (
+      <section id="about" className="py-24 sm:py-32 bg-white"> {/* Increased padding */}
+        <div className="container mx-auto px-4 animate-slideUp">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-montserrat text-center mb-16 sm:mb-20 text-purple-600 section-heading">About North X Agency</h2>
+          <p className="text-sm sm:text-lg font-open-sans text-center mb-20 sm:mb-24 max-w-3xl mx-auto text-gray-600">We’re more than an agency—we’re your growth partners. At North X Agency, we combine creativity with data-driven strategies to elevate your brand and streamline your operations. From stunning visuals to high-quality leads, we work like an extension of your team, available 24/7 across time zones to help your business shine.</p>
+          <h3 className="text-2xl sm:text-3xl font-bold font-montserrat text-center mb-12 sm:mb-16 text-purple-600">Our Leadership</h3>
+          <div className="grid grid-cols-1 gap-16 sm:gap-20 justify-center section-grid"> {/* Increased gap */}
+            {[
+              { 
+                name: "Rehman Azam", 
+                role: "CEO, Creative Director", 
+                bio: "Rehman brings a passion for storytelling through visuals, leading our team in crafting designs and campaigns that feel authentic and impactful.", 
+                img: "https://i.postimg.cc/hGG9ygqP/rehman-azam.png",
+                instagram: "https://www.instagram.com/rehman.northxagency?igsh=MTR5eGdtNDk5aDU0Nw==",
+                facebook: "https://www.facebook.com/share/1AaiaiW4m3/",
+                x: "https://x.com/rehman_northx?s=09",
+                linkedin: "https://www.linkedin.com/in/rehman-azam-1b87172b7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                email: "rehman.northxagency@gmail.com"
+              }
+            ].map((member, index) => (
+              <div key={index} className="bg-white p-10 sm:p-12 rounded-xl shadow-md hover-scale text-center border gradient-border max-w-md mx-auto">
+                <img 
+                  src={member.img} 
+                  alt={member.name} 
+                  className="w-24 sm:w-32 h-24 sm:h-32 rounded-full mx-auto mb-8 object-cover" 
+                  onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}
+                />
+                <p className="text-gray-600 font-open-sans text-sm" style={{ display: 'none' }}>{member.name}</p>
+                <h3 className="text-xl sm:text-2xl font-bold font-montserrat text-purple-600">{member.name}</h3>
+                <p className="text-pink-600 font-open-sans text-sm sm:text-base">{member.role}</p>
+                <p className="text-gray-600 font-open-sans text-sm sm:text-base mt-8">{member.bio}</p>
+                <div className="flex justify-center space-x-8 sm:space-x-10 mt-8">
+                  <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="text-pink-600 social-icon hover:gradient-text-hover">📷</a>
+                  <a href={member.facebook} target="_blank" rel="noopener noreferrer" className="text-pink-600 social-icon hover:gradient-text-hover">📘</a>
+                  <a href={member.x} target="_blank" rel="noopener noreferrer" className="text-pink-600 social-icon hover:gradient-text-hover">𝕏</a>
+                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-pink-600 social-icon hover:gradient-text-hover">💼</a>
+                  <a href={`mailto:${member.email}`} className="text-pink-600 social-icon hover:gradient-text-hover">✉️</a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    const Blog = ({ setView, setSelectedPost }) => {
+      const blogPosts = [
+        {
+          id: 1,
+          title: "Mastering Graphic Design: Crafting Your Brand’s Visual Identity",
+          excerpt: "Discover how we create stunning visuals to elevate your brand with a personal touch.",
+          content: `At North X Agency, graphic design is about telling your story through visuals that feel authentic. Led by Rehman Azam, we create logos, branding kits, and graphics that make your brand unforgettable. Our process starts with understanding your vision, followed by mood boards and iterative designs using Adobe Photoshop and Figma. A client saw 30% higher brand recognition after our work, proving that great design connects deeply.`
+        },
+        {
+          id: 2,
+          title: "Lead Generation: Fueling Growth with Precision",
+          excerpt: "Learn how our data-driven lead generation turns prospects into loyal customers.",
+          content: `Our lead generation, led by Subhan Humayun, targets the right prospects with multi-channel campaigns. Using LinkedIn Ads and HubSpot, we generated 500+ leads for a client in three months, boosting conversions by 20%. Our humanized approach ensures every lead feels like a perfect fit for your business.`
+        },
+        {
+          id: 3,
+          title: "3D Animation: Bringing Ideas to Life",
+          excerpt: "Explore how our animations create immersive experiences that captivate.",
+          content: `Maaz Anjum leads our 3D animation, crafting visuals with Blender and Maya. From storyboarding to rendering, we ensure every frame resonates. A client’s campaign saw 35% higher engagement, showing how our animations make products feel real and exciting.`
+        },
+        {
+          id: 4,
+          title: "Web Development: Building Your Digital Home",
+          excerpt: "Discover how we create responsive websites that drive results.",
+          content: `Our web development uses React and WordPress to build user-friendly sites. With agile methods and SEO optimization, we boosted a client’s sales by 25%. Our sites feel like welcoming digital storefronts that keep visitors coming back.`
+        },
+        {
+          id: 5,
+          title: "Video Editing: Telling Stories That Stick",
+          excerpt: "Learn how our editing creates videos that resonate emotionally.",
+          content: `Rehman Azam’s video editing turns raw footage into compelling stories using Adobe Premiere Pro. A corporate ad saw 40% higher engagement, proving our edits create connections that feel personal and impactful.`
+        },
+        {
+          id: 6,
+          title: "Social Media Marketing: Amplifying Your Voice",
+          excerpt: "See how our campaigns build engagement and loyalty.",
+          content: `Our social media marketing uses targeted ads and authentic content via Instagram Insights. A client’s campaign boosted engagement by 40%, turning followers into a vibrant community with a humanized approach.`
+        },
+        {
+          id: 7,
+          title: "Social Media Management: Your Online Community Builder",
+          excerpt: "Learn how we manage your social presence with care.",
+          content: `We handle your social channels with custom content and daily engagement using Buffer. A startup grew followers by 25% in six months, creating a community that feels connected and alive.`
+        }
+      ];
+
+      return (
+        <section className="py-24 sm:py-32 bg-white"> {/* Increased padding */}
+          <div className="container mx-auto px-4 animate-slideUp">
+            <button onClick={() => setView('main')} className="text-pink-600 font-open-sans mb-10 sm:mb-12 hover:gradient-text-hover text-sm sm:text-base">← Back to Home</button>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-montserrat text-center mb-16 sm:mb-20 text-purple-600 section-heading">Blog</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-16 section-grid"> {/* Increased gap */}
+              {blogPosts.map((post) => (
+                <div key={post.id} className="bg-white p-8 sm:p-10 rounded-xl shadow-md hover-scale border gradient-border">
+                  <h3 className="text-lg sm:text-xl font-bold font-montserrat text-purple-600 mb-6">{post.title}</h3>
+                  <p className="text-gray-600 font-open-sans text-sm sm:text-base mb-8">{post.excerpt}</p>
+                  <button
+                    onClick={() => {
+                      setView("blogPost");
+                      setSelectedPost(post);
+                    }}
+                    className="text-pink-600 font-open-sans text-sm sm:text-base hover:gradient-text-hover"
+                  >
+                    Read More
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const BlogPost = ({ post, setView }) => (
+      <section className="py-24 sm:py-32 bg-white"> {/* Increased padding */}
+        <div className="container mx-auto px-4 animate-slideUp">
+          <button onClick={() => setView("blog")} className="text-pink-600 font-open-sans mb-10 sm:mb-12 hover:gradient-text-hover text-sm sm:text-base">← Back to Blog</button>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-montserrat text-purple-600 mb-10 sm:mb-12">{post.title}</h2>
+          <p className="text-gray-600 font-open-sans text-sm sm:text-base mb-12 whitespace-pre-wrap">{post.content}</p>
+          <a href="#contact" className="gradient-button text-white px-8 sm:px-10 py-4 sm:py-5 rounded-lg font-open-sans text-sm sm:text-base hover:gradient-button transition">Get in Touch</a>
+        </div>
+      </section>
+    );
+
+    const Contact = () => (
+      <section id="contact" className="py-24 sm:py-32 bg-white"> {/* Increased padding */}
+        <div className="container mx-auto px-4 animate-slideUp">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-montserrat text-center mb-16 sm:mb-20 text-purple-600 section-heading">Contact Us</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-16 section-grid"> {/* Increased gap */}
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold font-montserrat text-purple-600 mb-8 sm:mb-10">Get in Touch</h3>
+              <p className="font-open-sans mb-8 text-gray-600 text-sm sm:text-base">Email: rehman@northxagency.com</p>
+              <p className="font-open-sans mb-8 text-gray-600 text-sm sm:text-base">Phone: +923276747558</p>
+              <p className="font-open-sans mb-8 text-gray-600 text-sm sm:text-base">Address: 123 Creative Lane, Innovation City, Pakistan</p>
+              <div className="flex space-x-8 sm:space-x-10 mt-8 sm:mt-10">
+                <a href="https://www.instagram.com/northxagency?igsh=MWV6eGZjM2h1cWszZg==" target="_blank" rel="noopener noreferrer" className="text-pink-600 social-icon hover:gradient-text-hover">📷</a>
+                <a href="https://www.facebook.com/share/16LqYtUGbx/" target="_blank" rel="noopener noreferrer" className="text-pink-600 social-icon hover:gradient-text-hover">📘</a>
+                <a href="https://x.com/NorthxAgency" target="_blank" rel="noopener noreferrer" className="text-pink-600 social-icon hover:gradient-text-hover">𝕏</a>
+              </div>
+            </div>
+            <div>
+              <form className="bg-white p-10 sm:p-12 rounded-xl shadow-md border gradient-border">
+                <div className="mb-8 sm:mb-10">
+                  <label className="block font-open-sans mb-3 text-purple-600 text-sm sm:text-base" htmlFor="name">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    className="w-full p-4 sm:p-5 bg-white text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600 form-input"
+                    required
+                  />
+                </div>
+                <div className="mb-8 sm:mb-10">
+                  <label className="block font-open-sans mb-3 text-purple-600 text-sm sm:text-base" htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    className="w-full p-4 sm:p-5 bg-white text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600 form-input"
+                    required
+                  />
+                </div>
+                <div className="mb-8 sm:mb-10">
+                  <label className="block font-open-sans mb-3 text-purple-600 text-sm sm:text-base" htmlFor="message">Message</label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    className="w-full p-4 sm:p-5 bg-white text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600 form-textarea"
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    const Footer = () => (
+      <footer className="bg-white text-gray-600 py-16 sm:py-20 border-t border-gray-200"> {/* Increased padding */}
+        <div className="container mx-auto px-4 text-center">
+          <p className="font-open-sans mb-8 text-sm sm:text-base">© 2025 North X Agency. All rights reserved.</p>
+          <p className="font-open-sans text-sm sm:text-base">150+ successful projects delivered with a 98% client satisfaction rate.</p>
+        </div>
+      </footer>
+    );
+
+    const App = () => {
+      const [view, setView] = useState("main");
+      const [selectedPost, setSelectedPost] = useState(null);
+
+      useEffect(() => {
+        console.log("App mounted successfully");
+      }, []);
+
+      return (
+        <ErrorBoundary>
+          <div>
+            <NavBar setView={setView} />
+            {view === "main" && (
+              <>
+                <Hero setView={setView} />
+                <ServicesShort setView={setView} />
+                <Achievements />
+                <WhyChooseUs setView={setView} />
+                <About />
+                <Contact />
+                <Footer />
+              </>
+            )}
+            {view === "portfolio" && <PortfolioPage setView={setView} />}
+            {view === "fullServices" && <FullServices setView={setView} />}
+            {view === "whyChooseUsDetails" && <WhyChooseUsDetails setView={setView} />}
+            {view === "blog" && <Blog setView={setView} setSelectedPost={setSelectedPost} />}
+            {view === "blogPost" && <BlogPost post={selectedPost} setView={setView} />}
+          </div>
+        </ErrorBoundary>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
